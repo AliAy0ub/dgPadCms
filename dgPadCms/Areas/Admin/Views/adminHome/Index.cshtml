@@ -1,0 +1,63 @@
+﻿﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>شبكة الميادين</title>
+    <meta name="description" content="User login page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="~/css/FontAwesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/backoffice.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style type="text/css">
+        .login-message ul {
+            list-style-type: none;
+            padding-inline-start: 0;
+            text-align: left;
+            font-size: 11px;
+            font-weight: bold;
+            color: #8f298d
+        }
+
+        .client-info img {
+            max-width: 66%;
+            max-height: 50px;
+        }
+    </style>
+</head>
+<body class="login-layout">
+    <div class="login-container">
+        <div class="login-form">
+            <h4>
+                Please Enter Your Information
+            </h4>
+            <form action="/Account/LogOn" method="post">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ace-icon fa fa-user"></i></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Username" name="Username">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="ace-icon fa fa-lock"></i></span>
+                    </div>
+                    <input type="password" class="form-control" placeholder="Password" name="Password">
+                </div>
+                <div class="login-message">
+                </div>
+                <div class="submit-wrapper">
+                    <button type="submit" class="btn btn-hilighted">
+                        <i class="ace-icon fa fa-key"></i>
+                        <span>Login</span>
+                    </button>
+                </div>
+                <input id="ReturnUrl" name="ReturnUrl" type="hidden" value="/" /><input name="__RequestVerificationToken" type="hidden" value="mPlYZ6w0K9ZrDLI_8RfmItsmjNV_Zii3P8L9ZacJGwVO3cRrWV5dV4-mazWhTx7MsK1mdv__64CgKWaycLpUwMncUPTb5jo2CAA8T0KxjEE1" />
+            </form>
+        </div>
+    </div>
+</body>
+</html> 

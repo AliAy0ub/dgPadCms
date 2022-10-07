@@ -1,0 +1,115 @@
+﻿@model Login
+
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <script src="/cdn-cgi/apps/head/AmU9iDLR9q6XK2DpPYITLWG40S0.js"></script>
+    <meta name="description" content="User login page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/7ac8bc06e5.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/css/backoffice.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style type="text/css">
+        .login-message ul {
+            list-style-type: none;
+            padding-inline-start: 0;
+            text-align: left;
+            font-size: 11px;
+            font-weight: bold;
+            color: #8f298d
+        }
+
+        .client-info img {
+            max-width: 66%;
+            max-height: 50px;
+        }
+    </style>
+</head>
+<body class="login-layout">
+    <div class="login-container">
+        <div class="client-info">
+            <img src="https://cdn-icons-png.flaticon.com/512/21/21601.png" />
+        </div>
+        <div class="login-form">
+            <h4>
+                Please Enter Your Information
+            </h4>
+            <form asp-controller="Account" asp-action="Login">
+                <input type="hidden" asp-for="ReturnUrl" />
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa-regular fa fa-user"></i></span>
+                    </div>
+                    <input asp-for="Email" class="form-control" placeholder="Email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa-solid fa fa-lock"></i></span>
+                    </div>
+                    <input asp-for="Password" class="form-control" placeholder="Password">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="login-message">
+                </div>
+                <div class="submit-wrapper">
+                    <button type="submit" class="btn btn-hilighted" style="margin-bottom: 100px;">
+                        <i class="ace-icon fa fa-key"></i>
+                        <span>Login</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+@*
+@model Login
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="ReturnUrl" />
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Log in" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+*@
