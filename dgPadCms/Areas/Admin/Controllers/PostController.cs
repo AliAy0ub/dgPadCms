@@ -2,6 +2,7 @@
 using dgPadCms.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Differencing;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace dgPadCms.Areas.Admin.Controllers
 {
@@ -148,6 +150,28 @@ namespace dgPadCms.Areas.Admin.Controllers
             {
                 ModelState.AddModelError("", "The taxonomy list is empty");
                 return View(post);
+            }
+
+            if (post.ImageUpload != null)
+            {
+            
+                string uploadsDir = Path.Combine(webHostEnvironment.WebRootPath, "media/images");
+
+                if (!string.Equals(post.Image, "noimage.png"))
+                {
+                    string oldImagePath = Path.Combine(uploadsDir, post.Image);
+                    if (System.IO.File.Exists(oldImagePath))
+                    {
+                        System.IO.File.Delete(oldImagePath);
+                    }
+                }
+
+                string imageName = Guid.NewGuid().ToString() + " " + post.ImageUpload.FileName;
+                string filePath = Path.Combine(uploadsDir, imageName);
+                FileStream fs = new FileStream(filePath, FileMode.Create);
+                await post.ImageUpload.CopyToAsync(fs);
+                fs.Close();
+                post.Image = imageName;
             }
 
             context.Update(post);

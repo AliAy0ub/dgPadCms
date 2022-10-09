@@ -18,7 +18,7 @@
                         </div>
                         <div class="fh5co_latest_trading_img_position_absolute"></div>
                         <div class="fh5co_latest_trading_img_position_absolute_1">
-                            <a href="single.html" class="text-white"> @i.PostTitle </a>
+                            <a asp-controller="UserHome" asp-action="SinglePost" asp-route-postId="@i.PostId" class="text-white"> @i.PostTitle </a>
                             <div class="fh5co_latest_trading_date_and_name_color"> @i.PostCreatoinDate</div>
                         </div>
                     </div>

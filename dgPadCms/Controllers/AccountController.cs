@@ -68,7 +68,7 @@ namespace dgPadCms.Controllers
             };
             if(User?.Identity?.IsAuthenticated ?? true)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Post", new { area = "admin" });
             }
             return View(login);
         }
@@ -91,7 +91,7 @@ namespace dgPadCms.Controllers
                 ModelState.AddModelError("", "Login failed, wrong credentials.");
             }
 
-            return RedirectToAction("Login");
+            return View();
         }
 
         // GET /account/logout

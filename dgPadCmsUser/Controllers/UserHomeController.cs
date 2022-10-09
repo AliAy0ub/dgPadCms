@@ -26,7 +26,7 @@ namespace dgPadCmsUser.Controllers
         {
             IndexViewModel indexViewModel = new IndexViewModel();
 
-            indexViewModel.lastFivePosts = await context.Posts.OrderByDescending(x => x.PostId).Take(5).ToListAsync();
+            indexViewModel.lastFivePosts = await context.Posts.OrderByDescending(x => x.PostId).Where(x => x.PostTypeId != 6).Take(5).ToListAsync();
 
             var lastThreePostTypes = await context.PostTypes.OrderByDescending(x => x.PostTypeId).Take(3).ToListAsync();
 
@@ -89,11 +89,13 @@ namespace dgPadCmsUser.Controllers
 
             ViewBag.term = term;
 
-            List < PostTerm> postTerms = new List<PostTerm>();
+            
+
+            List< PostTerm> postTerms = new List<PostTerm>();
 
             
              postTerms = await context.PostTerms.Where(x => x.TermId == term.TermId).ToListAsync();
-            
+
 
             List<int> postsId = new List<int>();
 
@@ -105,6 +107,8 @@ namespace dgPadCmsUser.Controllers
             //var postsIdWithoutDup = postsId.Distinct().ToList();
 
             ViewBag.TermPosts = await context.Posts.Where(x => postsId.Contains(x.PostId)).ToListAsync();
+
+           
             return View();
         }
 
@@ -116,6 +120,7 @@ namespace dgPadCmsUser.Controllers
             ViewBag.post = post;
             return View();
         }
+
 
         public IActionResult Contact()
         {

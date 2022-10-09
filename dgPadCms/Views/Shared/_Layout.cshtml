@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - dgPadCms</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/21/21601.png">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -11,7 +12,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">dgPadCms</a>
+                <a class="navbar-brand" asp-area="Admin" asp-controller="Post" asp-action="Index">dgPadCms</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -45,9 +46,8 @@
                             <a asp-area="Admin" asp-controller="Post" asp-action="Index" class="nav-link text-dark">Post</a>
                         </li>
                     }
-
                     <li class="nav-item ml-1">
-                        <a href="https://localhost:5003/" class="nav-link text-dark">User Website</a>
+                        <a href="https://localhost:5003/" target="_blank" class="nav-link text-dark">User Website</a>
                     </li>
                 </ul>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
