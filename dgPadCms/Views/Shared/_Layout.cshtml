@@ -12,14 +12,15 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="Admin" asp-controller="Post" asp-action="Index">dgPadCms</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                
                 <ul class="navbar-nav flex-grow-1">
                     @if (User.IsInRole("admin"))
                     {
+                        <a class="navbar-brand" asp-area="Admin" asp-controller="Post" asp-action="Index">dgPadCms</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
                         <li class="nav-item ml-1">
                             <a asp-area="Admin" asp-controller="Users" asp-action="Index" class="nav-link text-dark">Users</a>
                         </li>
@@ -27,9 +28,29 @@
                         <li class="nav-item ml-1">
                             <a asp-area="Admin" asp-controller="Roles" asp-action="Index" class="nav-link text-dark">Roles</a>
                         </li>
+                        <li class="nav-item ml-1">
+                            <a asp-area="Admin" asp-controller="Taxonomy" asp-action="Index" class="nav-link text-dark">Taxonomy</a>
+                        </li>
+
+                        <li class="nav-item ml-1">
+                            <a asp-area="Admin" asp-controller="Term" asp-action="Index" class="nav-link text-dark">Term</a>
+                        </li>
+
+                        <li class="nav-item ml-1">
+                            <a asp-area="Admin" asp-controller="PostType" asp-action="Index" class="nav-link text-dark">PostType</a>
+                        </li>
+
+                        <li class="nav-item ml-1">
+                            <a asp-area="Admin" asp-controller="Post" asp-action="Index" class="nav-link text-dark">Post</a>
+                        </li>
                     }
-                    @if (User.IsInRole("editor") || User.IsInRole("admin") )
+                    @if (User.IsInRole("editor")  )
                     {
+                        <a class="navbar-brand" asp-area="Admin" asp-controller="Post" asp-action="Index">dgPadCms</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
                         <li class="nav-item ml-1">
                             <a asp-area="Admin" asp-controller="Taxonomy" asp-action="Index" class="nav-link text-dark">Taxonomy</a>
                         </li>

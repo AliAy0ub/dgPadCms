@@ -1,10 +1,13 @@
-﻿using dgPadCms.Models;
+﻿using dgPadCms.Infrastructure;
+using dgPadCms.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace dgPadCms.Areas.Admin.Controllers
@@ -15,11 +18,14 @@ namespace dgPadCms.Areas.Admin.Controllers
     {
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<AppUser> userManager;
+        private readonly dgPadCmsContext context;
 
-        public RolesController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager)
+
+        public RolesController(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, dgPadCmsContext context)
         {
             this.roleManager = roleManager;
             this.userManager = userManager;
+            this.context = context;
         }
 
         // GET /admin/roles
@@ -93,6 +99,17 @@ namespace dgPadCms.Areas.Admin.Controllers
             }
 
             return Redirect(Request.Headers["Referer"].ToString());
+        }
+
+        // GET /admin/roles/delete/id
+        public async Task<IActionResult> Delete(string roleId)
+        {
+            var role = await context.Roles.Where(x => x.Id == roleId).FirstOrDefaultAsync();      
+            context.Roles.Remove(role);
+            context.SaveChanges();
+
+            
+            return RedirectToAction("Index");
         }
     }
 }

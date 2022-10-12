@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Taxonomies</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create"><button class="btn btn-primary">Create New</button></a>
 </p>
 <table class="table">
     <thead>
@@ -17,9 +17,6 @@
             </th>
             <th>
                 TaxonomyName
-            </th>
-            <th>
-                TaxonomyCode
             </th>
             <th></th>
         </tr>
@@ -32,9 +29,6 @@
             </td>
             <td>
                 @item.TaxonomyName
-            </td>
-            <td>
-                @item.TaxonomyCode
             </td>
             <td>
                     <a asp-action="Edit" asp-route-Taxonomyid="@item.TaxonomyId">Edit</a> |

@@ -86,7 +86,16 @@ namespace dgPadCms.Controllers
                 {
                     Microsoft.AspNetCore.Identity.SignInResult result = await signInManager.PasswordSignInAsync(appUser, login.Password, false, false);
                     if (result.Succeeded)
-                        return Redirect(login.ReturnUrl ?? "/");
+                    {
+                        if (User.IsInRole("editor") || User.IsInRole("admin"))
+                        {
+                            return Redirect(login.ReturnUrl ?? "/");
+                        }
+                        else
+                        {
+                            return RedirectToAction("waitPage");
+                        }
+                    }
                 }
                 ModelState.AddModelError("", "Login failed, wrong credentials.");
             }
@@ -132,6 +141,11 @@ namespace dgPadCms.Controllers
                     TempData["Success"] = "Your information has been edited!";
             }
 
+            return View();
+        }
+
+        public IActionResult waitPage()
+        {
             return View();
         }
     }

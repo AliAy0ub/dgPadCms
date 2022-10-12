@@ -33,6 +33,9 @@
                 <td>
                     @item.Email
                 </td>
+                <td>
+                    <a asp-action="Delete" asp-route-userId="@item.Id">Delete</a>
+                </td>
             </tr>
         }
     </tbody>
