@@ -1,5 +1,6 @@
 ﻿using dgPadCms.Infrastructure;
 using dgPadCms.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis.Differencing;
@@ -14,6 +15,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace dgPadCms.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "admin,editor")]
     [Area("Admin")]
     public class PostController : Controller
     {
